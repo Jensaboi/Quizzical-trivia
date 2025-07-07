@@ -12,6 +12,20 @@ function App() {
         setIsQuizStarted(prev => !prev)
     }
 
+    function selectAnswer(obj, answer){
+        setQuizData(prevData => prevData.map( prevObj => {
+            if(prevObj.question === obj.question){
+                return({
+                    ...prevObj,
+                    selected_answer: answer
+                })
+            }
+            return prevObj;
+        }))
+    }
+    useEffect(()=>{
+        console.log(quizData)
+    },[quizData])
     //Fetch quiz data
     useEffect(()=>{
         const API_URL = 'https://opentdb.com/api.php?amount=5'
@@ -27,17 +41,9 @@ function App() {
 
     },[])
 
-    useEffect(()=>{
-        console.log(quizData)
-    },[quizData])
-
-
     const questionElements = quizData.map((item, i) => {
-
-    const allAnswers = shuffleArr([...item.incorrect_answers, item.correct_answer])
-
         return(
-            <Question key={i} question={item.question} answers={allAnswers}/>
+            <Question key={i} data={item} selectAnswer={selectAnswer}/>
         )
     })
 
