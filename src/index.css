@@ -84,12 +84,15 @@ main::after{
 
 .quiz-section{
     padding: 2em;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    gap: 2em;
+    align-items: stretch;
+    gap: 1.5em;
 }
 
 .question-article{
@@ -98,9 +101,10 @@ main::after{
     justify-content: center;
     align-items: start;
     min-width: 340px;
-    gap: 0.7em;
+    gap: 0.5em;
 }
 .question-article hr{
+    margin-top: 5px;
     width: 100%;
     height: 1px;
     background-color: #DBDEF0;
@@ -130,6 +134,29 @@ main::after{
     border-radius: 8px;
     border: 1px solid var(--blue-600);
     cursor: pointer;
+}
+.answer-btns-container{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.check-answer-btn-container{
+    align-self: flex-end;
+}
+
+.check-answers-btn{
+    background-color: var(--blue-600);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.675rem;
+    font-weight: 500;
+    line-height: 100%;
+    padding: 1.2em 2em;
+    border: none;
+    border-radius: 10px;
+    color: var(--bg-color);
 }
 
 

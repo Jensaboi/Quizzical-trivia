@@ -1,3 +1,4 @@
+
 function WelcomeSection({startQuiz}){
     return(
         <section className="welcome-section">
