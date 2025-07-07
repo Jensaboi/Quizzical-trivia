@@ -7,25 +7,17 @@ function App() {
 
     const [isQuizStarted, setIsQuizStarted] = useState(false)
     const [quizData, setQuizData ] = useState([])
+    const [answers, setAnswers] = useState([])
 
     function startQuiz(){
         setIsQuizStarted(prev => !prev)
     }
 
-    function selectAnswer(obj, answer){
-        setQuizData(prevData => prevData.map( prevObj => {
-            if(prevObj.question === obj.question){
-                return({
-                    ...prevObj,
-                    selected_answer: answer
-                })
-            }
-            return prevObj;
-        }))
+    function selectAnswer(i, selectedAnswer){
+        setAnswers(prev => [...prev, {index: i, answer: selectedAnswer}])
     }
-    useEffect(()=>{
-        console.log(quizData)
-    },[quizData])
+    useEffect
+
     //Fetch quiz data
     useEffect(()=>{
         const API_URL = 'https://opentdb.com/api.php?amount=5'
@@ -43,7 +35,7 @@ function App() {
 
     const questionElements = quizData.map((item, i) => {
         return(
-            <Question key={i} data={item} selectAnswer={selectAnswer}/>
+            <Question key={i} index={i} data={item} selectAnswer={selectAnswer}/>
         )
     })
 
