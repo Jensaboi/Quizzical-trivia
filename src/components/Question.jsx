@@ -1,3 +1,4 @@
+import { decode } from 'he'
 
 function Question({question, answers}){
 
@@ -7,12 +8,12 @@ function Question({question, answers}){
             className="answer-btn"
             key={answer}
         >
-            {answer}
+            {decode(answer)}
         </button>
     ))
     return(
         <article className="question-article">
-            <p className="question-text">{question}</p>
+            <p className="question-text">{decode(question)}</p>
             <div className="answer-btns-container">
                 {answerButtons}
             </div>

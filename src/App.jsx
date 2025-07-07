@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import WelcomeSection from './components/WelcomeSection'
-import QuizSection from './components/QuizSection'
+import Question from './components/Question'
+import { shuffleArr } from './utils/utils'
 
 function App() {
 
@@ -10,6 +11,7 @@ function App() {
     function startQuiz(){
         setIsQuizStarted(prev => !prev)
     }
+
     //Fetch quiz data
     useEffect(()=>{
         const API_URL = 'https://opentdb.com/api.php?amount=5'
@@ -24,14 +26,32 @@ function App() {
         .catch(err => console.error(err))
 
     },[])
+
     useEffect(()=>{
         console.log(quizData)
     },[quizData])
+
+
+    const questionElements = quizData.map((item, i) => {
+
+    const allAnswers = shuffleArr([...item.incorrect_answers, item.correct_answer])
+
+        return(
+            <Question key={i} question={item.question} answers={allAnswers}/>
+        )
+    })
+
   return (
     <main>
-        {
-        !isQuizStarted ? <WelcomeSection startQuiz={startQuiz} />
-        : <QuizSection quizData={quizData}/>
+        { !isQuizStarted ? <WelcomeSection startQuiz={startQuiz} />
+          : (
+            <section className="quiz-section">
+                {questionElements}
+                <div className="check-answer-btn-container">
+                    <button className="check-answers-btn">Check Answers</button>
+                </div>
+            </section>
+            )
         }
 
     </main>
