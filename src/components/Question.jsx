@@ -1,19 +1,18 @@
 import { decode } from 'he'
 import { shuffleArr } from '../utils/utils';
 
-function Question({data, selectAnswer, index }){
+function Question({data, selectAnswer }){
 
-    const allAnswers = shuffleArr([...data.incorrect_answers, data.correct_answer])
-    const answerButtons = allAnswers.map( answer => {
+    const answerButtons = data.all_answers.map( answer => {
         let styles = {
-            backgroundColor: data?.selected_answer === answer ? '#D6DBF5' : ''
+            backgroundColor: data?.selected === answer ? '#D6DBF5' : ''
         }
 
         return (
             <button
                 style={styles}
                 key={answer}
-                onClick={()=>{selectAnswer(index, answer)}}
+                onClick={()=>{selectAnswer(data,answer)}}
                 className='answer-btn'
             >
                 {decode(answer)}

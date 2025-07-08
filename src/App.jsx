@@ -7,16 +7,26 @@ function App() {
 
     const [isQuizStarted, setIsQuizStarted] = useState(false)
     const [quizData, setQuizData ] = useState([])
-    const [answers, setAnswers] = useState([])
 
     function startQuiz(){
         setIsQuizStarted(prev => !prev)
     }
 
-    function selectAnswer(i, selectedAnswer){
-        setAnswers(prev => [...prev, {index: i, answer: selectedAnswer}])
+    function selectAnswer(questionObj, selectedAnswer){
+        setQuizData(prev => prev.map(item =>{
+            if(item.question === questionObj.question){
+                return{
+                    ...item,
+                    selected: selectedAnswer
+                }
+            }
+            return item
+        }))
     }
-    useEffect
+
+    useEffect(()=>{
+        console.log(quizData)
+    },[quizData])
 
     //Fetch quiz data
     useEffect(()=>{
@@ -28,14 +38,27 @@ function App() {
 
                 return response.json()
         })
-        .then(data => setQuizData(data.results))
+        .then(data =>{
+           const modified = data.results.map(item =>{
+                const arrCopy = item.incorrect_answers.slice()
+                arrCopy.push(item.correct_answer)
+
+                return ({
+                    ...item,
+                    all_answers: shuffleArr(arrCopy),
+                    selected: null
+                })
+            })
+
+            setQuizData(modified)
+        })
         .catch(err => console.error(err))
 
     },[])
 
     const questionElements = quizData.map((item, i) => {
         return(
-            <Question key={i} index={i} data={item} selectAnswer={selectAnswer}/>
+            <Question key={i} data={item} selectAnswer={selectAnswer}/>
         )
     })
 
