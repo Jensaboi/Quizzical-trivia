@@ -1,12 +1,37 @@
-# React + Vite
+# Quizzical 🎯
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple and fun quiz app built with **React** and **Vite** as part of a solo project from the [Scrimba Learn React](https://scrimba.com/learn-react-c0e).
 
-Currently, two official plugins are available:
+## 🧠 Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**Quizzical** is a quiz game that generates five random questions for each game session. The questions can be either:
 
-## Expanding the ESLint configuration
+-   **True / False**
+-   **Multiple Choice** (1 out of 4 answers)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+After answering all questions, users can click **"Check Answers"** to see how many they got right and then choose **"Play Again"** to load a new set of questions.
+
+## ⚙️ Features
+
+-   Fetches quiz data from the [Open Trivia Database](https://opentdb.com/)
+-   Supports **True/False** and **Multiple Choice** formats
+-   Score calculation on submission
+-   Option to play a new game instantly
+-   Clean and interactive UI
+
+## 🛠 Built With
+
+-   [React](https://reactjs.org/)
+-   [Vite](https://vitejs.dev/)
+-   CSS Modules
+
+## 📦 Installation
+
+(Make sure you have Node.js and npm installed.)
+
+```bash
+git clone https://github.com/yourusername/quizzical.git
+cd quizzical
+npm install
+npm run dev
+```
