@@ -88,14 +88,14 @@ function App() {
                 {!isDone ? (
                     <button 
                         onClick={checkAnswers}
-                        className="check-answers-btn"
+                        className="default-btn"
                     >
                         Check Answers
                     </button>
                 ) : (
                     <>
-                        <p>You scored {correctAnswerCount}/{quizData.length} correct answers</p>
-                        <button onClick={newGame}>Play again!</button>
+                        <p className='score-text'>You scored {correctAnswerCount}/{quizData.length} correct answers</p>
+                        <button className='default-btn' onClick={newGame}>Play again!</button>
                     </>
                 )}
                 </div>
