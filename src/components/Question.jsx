@@ -1,19 +1,25 @@
 import { decode } from 'he'
 import { shuffleArr } from '../utils/utils';
+import clsx from 'clsx';
 
-function Question({data, selectAnswer }){
+function Question({data, selectAnswer , isDone}){
 
     const answerButtons = data.all_answers.map( answer => {
-        let styles = {
-            backgroundColor: data?.selected === answer ? '#D6DBF5' : ''
-        }
+        const selected = data?.selected_answer === answer;
+        const correct = data.correct_answer === answer
 
+        const className = clsx({
+            'answer-btn': true, 
+            'selected-answer': selected && !isDone,
+            'correct-answer': correct && isDone,
+            'wrong-answer': selected && !correct && isDone
+        })
         return (
             <button
-                style={styles}
+                disabled={isDone}
+                className={className}
                 key={answer}
                 onClick={()=>{selectAnswer(data,answer)}}
-                className='answer-btn'
             >
                 {decode(answer)}
             </button>

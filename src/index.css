@@ -120,12 +120,24 @@ body::after{
     font-size: 0.675rem;
     font-weight: 500;
     color: var(--text-color);
-    padding: 0.3em 0.5em;
+    padding: 0.4em 0.8em;
     min-width: 65px;
     text-align: center;
     border-radius: 8px;
     border: 1px solid var(--blue-600);
     cursor: pointer;
+}
+.selected-answer{
+    background-color: #D6DBF5;
+}
+.correct-answer{
+    background-color: #94D7A2;
+    border: none;
+}
+.wrong-answer{
+    border: none;
+    background-color: #f8bcbc;
+    opacity: 60%;
 }
 .answer-btns-container{
     width: 100%;
@@ -151,6 +163,7 @@ body::after{
     border: none;
     border-radius: 10px;
     color: var(--bg-color);
+    cursor: pointer;
 }
 
 
