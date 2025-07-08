@@ -16,6 +16,15 @@
     margin: 0;
 }
 
+#root{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 body{
     position: relative;
     z-index: 0;
@@ -82,7 +91,7 @@ body::after{
 }
 
 .quiz-section{
-    padding: 2em;
+    padding:1.5em;
     width: 100%;
     max-width: 600px;
     margin: 0 auto;
